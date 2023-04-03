@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: software.amazon.awscdk:cdk-asset-awscli-v1:2.2.127">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/software/amazon/awscdk/cdk-asset-awscli-v1/2.2.127/cdk-asset-awscli-v1-2.2.127.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/software/amazon/awscdk/cdk-asset-awscli-v1/2.2.127/cdk-asset-awscli-v1-2.2.127-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/software/amazon/awscdk/cdk-asset-awscli-v1/2.2.127/cdk-asset-awscli-v1-2.2.127-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
