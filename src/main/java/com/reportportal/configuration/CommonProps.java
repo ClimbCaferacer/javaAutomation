@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config.LoadType;
 import org.aeonbits.owner.Config.Sources;
 @Sources({
         "system:properties",
-        "classpath:properties/${env}.properties"
+        "classpath:properties/common.properties"
 })
 @LoadPolicy(LoadType.MERGE)
 public interface CommonProps extends Config {

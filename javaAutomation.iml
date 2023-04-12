@@ -12,13 +12,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.inject:guice:no_aop:4.1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.21" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.82" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.webjars:jquery:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.2" level="project" />
@@ -56,5 +52,14 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:6.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:6.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.20.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.20.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.20.0" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-testng:2.21.0" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-java-commons:2.21.0" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-model:2.21.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.qameta.allure:allure-test-filter:2.21.0" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.9.1" level="project" />
   </component>
 </module>

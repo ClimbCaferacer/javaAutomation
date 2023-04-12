@@ -1,4 +1,4 @@
-package reportportal.ui;
+package com.reportportal.ui;
 
 public class WidgetTest {
 
