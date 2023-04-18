@@ -1,4 +1,4 @@
-package com.reportportal.api;
+package com.reportportal.rest;
 
 import com.reportportal.configuration.CommonProps;
 import io.restassured.specification.RequestSpecification;
