@@ -1,4 +1,4 @@
-package com.reportportal.api;
+package com.reportportal.API;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

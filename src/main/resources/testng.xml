@@ -6,7 +6,7 @@
     </listeners>
     <test name="api tests"   >
         <packages>
-            <package name="com.reportportal.api" />
+            <package name="com.reportportal.API" />
         </packages>
     </test>
 </suite>
