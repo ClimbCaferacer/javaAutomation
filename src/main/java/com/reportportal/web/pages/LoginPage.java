@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage extends AbstractPage {
 
-    private static final String PAGE_PATH = "/#login";
+    private static final String PAGE_PATH = "/ui/#login";
 
     @Override
     public String getPagePath() {

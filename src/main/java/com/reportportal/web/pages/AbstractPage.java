@@ -8,7 +8,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
 public abstract class AbstractPage {
-    private static final String PATH = "/";
+    private static final String PATH = "////";
     private static final int SECONDS_FOR_PAGE_LOAD = 30;
     private static final int POLL_INTERVAL = 1;
 
