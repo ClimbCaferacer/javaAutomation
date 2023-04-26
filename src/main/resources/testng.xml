@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="api suite" verbose="1" >
+<suite name="api suite" parallel="methods" thread-count="5" verbose="1" >
     <listeners>
         <listener class-name="com.reportportal.utils.TestListener"/>
     </listeners>
     <test name="api tests"   >
         <packages>
-            <package name="com.reportportal.api" />
+            <package name="com.reportportal.API" />
+            <package name="com.reportportal.UI" />
         </packages>
     </test>
 </suite>
