@@ -20,6 +20,7 @@
     <aspectj.version>1.9.9.1</aspectj.version>
     <selenide.version>6.13.0</selenide.version>
     <assertj.version>3.24.2</assertj.version>
+    <cucumber.version>7.11.2</cucumber.version>
   </properties>
 
   <dependencies>
@@ -115,6 +116,17 @@
       <groupId>org.awaitility</groupId>
       <artifactId>awaitility</artifactId>
       <version>4.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
     </dependency>
 
 
