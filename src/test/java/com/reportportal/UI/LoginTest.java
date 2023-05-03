@@ -1,6 +1,7 @@
 package com.reportportal.UI;
 
 import com.codeborne.selenide.Selenide;
+import com.reportportal.BaseTest;
 import com.reportportal.web.pages.AllDashboardsPage;
 import com.reportportal.web.pages.LoginPage;
 import org.assertj.core.api.Assertions;
@@ -8,9 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest {
-    LoginPage loginPage = new LoginPage();
-    AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
+public class LoginTest extends BaseTest {
 
     @DataProvider
     public Object[][] users() {

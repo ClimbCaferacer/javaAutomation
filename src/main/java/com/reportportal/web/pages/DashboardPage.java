@@ -9,7 +9,7 @@ public class DashboardPage extends BaseWebPage {
 
     private static final String PAGE_PATH = "/dashboard";
 
-    public String addNewWidget(String widgetType) {
+    public String addNewWidget(String widgetType, String widgetName) {
         $x("//span[text()='Add new widget']").shouldBe(Condition.visible).click();
         $x(format("//div[text()='%s']", widgetType)).shouldBe(Condition.visible).click();
         $x("//span[text()='Next step']").shouldBe(Condition.visible).click();
@@ -18,7 +18,8 @@ public class DashboardPage extends BaseWebPage {
         $x("//input[@placeholder='Enter an attribute key']").shouldBe(Condition.visible).sendKeys("key");
         $x("//span[text()='Next step']").shouldBe(Condition.visible).click();
 
-        var widgetName = $x("//input[@placeholder='Enter widget name']").shouldBe(Condition.visible).getValue();
+        $x("//input[@placeholder='Enter widget name']").shouldBe(Condition.visible).clear();
+        $x("//input[@placeholder='Enter widget name']").sendKeys(widgetName);
         $x("//button[text()='Add']").shouldBe(Condition.visible).click();
         waitForPageToLoad();
         return widgetName;

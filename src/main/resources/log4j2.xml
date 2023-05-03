@@ -23,8 +23,8 @@
     <Logger name="wiremock.org" level="WARN"/>
     <Logger name="org.eclipse.jetty" level="WARN"/>
 -->
-    <Root level="DEBUG">
-      <AppenderRef ref="STDOUT" level="${sys:log4j2.console.level:-DEBUG}"/>
+    <Root level="INFO">
+      <AppenderRef ref="STDOUT" level="${sys:log4j2.console.level:-INFO}"/>
     </Root>
   </Loggers>
 </Configuration>
