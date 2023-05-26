@@ -18,4 +18,10 @@ public interface CommonProps extends Config {
 
     @Key("password")
     String password();
+
+    @Key("api")
+    String api();
+
+    @Key("default.project.name")
+    String defaultProjectName();
 }

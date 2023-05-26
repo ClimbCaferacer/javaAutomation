@@ -12,10 +12,14 @@ public class DashboardPage extends BaseWebPage {
     public String addNewWidget(String widgetType, String widgetName) {
         $x("//span[text()='Add new widget']").shouldBe(Condition.visible).click();
         $x(format("//div[text()='%s']", widgetType)).shouldBe(Condition.visible).click();
+        waitForPageToLoad();
         $x("//span[text()='Next step']").shouldBe(Condition.visible).click();
 
         $x("//div[contains(@class,'widgetWizardModal')]//span[text()='DEMO_FILTER']").shouldBe(Condition.visible).click();
-        $x("//input[@placeholder='Enter an attribute key']").shouldBe(Condition.visible).sendKeys("key");
+
+        if(widgetType.equals("Component health check")) {
+            $x("//input[@placeholder='Enter an attribute key']").shouldBe(Condition.visible).sendKeys("key");
+        }
         $x("//span[text()='Next step']").shouldBe(Condition.visible).click();
 
         $x("//input[@placeholder='Enter widget name']").shouldBe(Condition.visible).clear();

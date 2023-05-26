@@ -30,9 +30,10 @@ public class StepDefinitions {
         allDashboardsPage.openDashboard(dashboardName);
     }
 
-    @And("Creates new widget {string}")
-    public void createsNewWidget(String widgetName) {
-        dashboardPage.addNewWidget("Component health check", widgetName);
+    @And("Creates new widget {string} with name {string}")
+    public void createsNewWidget(String widgetType, String widgetName) {
+        allDashboardsPage.waitForPageToLoad();
+        dashboardPage.addNewWidget(widgetType, widgetName);
     }
 
     @Then("{string} present on dashboard")

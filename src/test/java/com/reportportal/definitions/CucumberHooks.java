@@ -15,8 +15,6 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.filter.session.SessionFilter;
 import org.aeonbits.owner.ConfigFactory;
 
-import java.util.Objects;
-
 
 public class CucumberHooks {
 
@@ -37,13 +35,13 @@ public class CucumberHooks {
         loginPage.waitForPageToLoad();
     }
 
-    @After("@CreateWidget")
+    @After("@deleteWidget")
     public void deleteWidget() {
-        var widgetId = dashboardAPI.getDashboardById("superadmin_personal", 17).asDto()
+        var widgetId = dashboardAPI.getDashboardById(PROPS.defaultProjectName(), 17).asDto()
                 .getWidgets().stream()
-                .filter(widget -> Objects.equals(widget.getWidgetName(), "NEW WIDGET"))
+                .filter(widget -> widget.getWidgetName().contains("NEW WIDGET"))
                 .findFirst().get().getWidgetId();
-        dashboardAPI.deleteWidget("superadmin_personal", 17, widgetId);
+        dashboardAPI.deleteWidget(PROPS.defaultProjectName(), 17, widgetId);
     }
 
     @After

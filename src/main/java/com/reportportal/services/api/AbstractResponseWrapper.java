@@ -12,13 +12,16 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
+import static org.testng.Assert.assertEquals;
 
 public abstract class AbstractResponseWrapper<T> {
     private static final String DEFAULT_STATUS_CODE_ERROR = "Wrong status code!";
     private static final int RESPONSE_CODE_300 = 300;
     private static final int RESPONSE_CODE_400 = 400;
+    private static final int RESPONSE_CODE_404 = 404;
+    private static final int RESPONSE_CODE_403 = 403;
     private static final int RESPONSE_CODE_500 = 500;
 
     private final ValidatableResponse response;
@@ -74,6 +77,12 @@ public abstract class AbstractResponseWrapper<T> {
     }
 
     @SneakyThrows
+    public AbstractResponseWrapper<T> expectStatusNotFoundRequest() {
+        validateResponseCode(equalTo(RESPONSE_CODE_404));
+        return this;
+    }
+
+    @SneakyThrows
     private void validateResponseCode(Matcher<? super Integer> expectedStatusCode) {
         validateResponseCode(DEFAULT_STATUS_CODE_ERROR, expectedStatusCode);
     }
@@ -90,11 +99,17 @@ public abstract class AbstractResponseWrapper<T> {
     @SneakyThrows
     private static void failOnServerError(ValidatableResponse response) {
         if (response.extract().statusCode() >= RESPONSE_CODE_500) {
-            throw new HttpException(response.extract().body().asString());
+            throw new HttpException("Failed with server error" + response.extract().body().asString());
         }
     }
 
     public ValidatableResponse response() {
         return response;
+    }
+
+    public AbstractResponseWrapper<T> expectStatusForbidden() {
+        validateResponseCode(equalTo(RESPONSE_CODE_403));
+        assertEquals((Integer) this.response.extract().body().jsonPath().get("errorCode"), 4003);
+        return this;
     }
 }
