@@ -1,8 +1,9 @@
 package com.reportportal.utils;
 
-import org.testng.ITestListener;
 
-public class TestListener implements ITestListener {
+import org.junit.runner.notification.RunListener;
+
+public class TestListener extends RunListener {
 
 
 }

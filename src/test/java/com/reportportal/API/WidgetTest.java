@@ -3,10 +3,12 @@ package com.reportportal.API;
 import com.reportportal.BaseTest;
 import com.reportportal.services.api.widget.create.request.CreateWidgetRequest;
 import com.reportportal.services.api.widget.edit.request.EditWidgetRequest;
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
+import static com.reportportal.web.pages.AbstractPage.PROPS;
 import static java.lang.Integer.parseInt;
 import static java.lang.System.currentTimeMillis;
 
@@ -42,7 +44,8 @@ public class WidgetTest extends BaseTest {
                 .isEqualTo(40420);
     }
 
-    @Test(dataProvider = "widgetNames")
+    @Test
+    @UseDataProvider("widgetNames")
     public void verifyCreateWidget(String widgetName) {
         widgetAPI.createWidget(PROPS.defaultProjectName(), widgetName).expectStatusOk();
     }

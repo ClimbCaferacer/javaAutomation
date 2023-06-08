@@ -2,12 +2,12 @@ package com.reportportal.UI;
 
 import com.codeborne.selenide.Selenide;
 import com.reportportal.BaseTest;
-import com.reportportal.web.pages.AllDashboardsPage;
-import com.reportportal.web.pages.LoginPage;
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
+import io.cucumber.java.After;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+
 
 public class LoginTest extends BaseTest {
 
@@ -20,11 +20,12 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "users")
+    @Test
+    @UseDataProvider("users")
     public void loginTest(String login, String password) {
         loginPage.open();
         loginPage.login(login, password);
-        allDashboardsPage.waitForPageToLoad();
+        loginPage.waitForPageToLoad();
         Assertions.assertThat(allDashboardsPage.isCurrentlyOpened())
                 .as("<All Dashboards> page not opened.").isTrue();
         Assertions.assertThat(allDashboardsPage.isPageOpenedUnderUser(login))
@@ -32,7 +33,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @AfterMethod
+    @After
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }

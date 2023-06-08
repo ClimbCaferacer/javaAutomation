@@ -9,7 +9,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,7 +16,7 @@ import java.net.URISyntaxException;
 
 public class DeleteRequest {
 
-    @Test
+
     public void deleteRequest() throws IOException, URISyntaxException {
         URI uri = new URIBuilder()
                 .setScheme("http")

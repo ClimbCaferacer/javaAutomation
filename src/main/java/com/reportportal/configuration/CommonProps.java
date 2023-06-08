@@ -24,4 +24,7 @@ public interface CommonProps extends Config {
 
     @Key("default.project.name")
     String defaultProjectName();
+
+    @Key("driver")
+    String driver();
 }

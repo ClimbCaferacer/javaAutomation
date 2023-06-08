@@ -1,35 +1,22 @@
 package com.reportportal.web.pages;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.JavascriptExecutor;
+import com.reportportal.configuration.CommonProps;
+import lombok.extern.slf4j.Slf4j;
+import org.aeonbits.owner.ConfigFactory;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.await;
-
+@Slf4j
 public abstract class AbstractPage {
-    private static final String PATH = "////";
-    private static final int SECONDS_FOR_PAGE_LOAD = 30;
-    private static final int POLL_INTERVAL = 1;
 
-    public void open() {
-        Selenide.open(getPagePath());
-    }
+    private static final String PATH = "////";
+    public static final CommonProps PROPS = ConfigFactory.create(CommonProps.class);
 
     public void openPage(String path) {
-        Selenide.open(path);
+        //Selenide.open(path);
     }
 
     public void refresh(){
-        Selenide.refresh();
-    }
-
-    public boolean isCurrentlyOpened() {
-        return WebDriverRunner.getWebDriver().getCurrentUrl().contains(getPageUrl());
-    }
-
-    public boolean isPageOpenedUnderUser(String user) {
-        return WebDriverRunner.getWebDriver().getCurrentUrl().contains(user);
+        //Selenide.refresh();
     }
 
     public String getPageTitle() {
@@ -44,15 +31,16 @@ public abstract class AbstractPage {
         return PATH;
     }
 
-    public void waitForPageToLoad() {
-        JavascriptExecutor js = (JavascriptExecutor) WebDriverRunner.getWebDriver();
-        boolean isJQuery = (boolean) js
-                .executeScript("if (window.jQuery) { return true; } else { return false; }");
-        await().atMost(SECONDS_FOR_PAGE_LOAD, SECONDS).pollInterval(POLL_INTERVAL, SECONDS).until(() -> {
-            if (js.executeScript("return document.readyState").toString().equals("complete")) {
-                return !isJQuery || (Long) js.executeScript("return jQuery.active") == 0;
-            }
-            return false;
-        });
-    }
+/*    @BeforeSuite
+    public void setWebDriver() {
+        Configuration.baseUrl = PROPS.baseUrl();
+
+
+
+        //api
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter(),
+                new SessionFilter(),
+                new CookieFilter(),
+                new ErrorLoggingFilter());
+    }*/
 }

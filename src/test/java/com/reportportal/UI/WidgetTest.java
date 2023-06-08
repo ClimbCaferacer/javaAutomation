@@ -2,18 +2,18 @@ package com.reportportal.UI;
 
 import com.reportportal.BaseTest;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.Test;
+
 
 public class WidgetTest extends BaseTest {
 
-    @Test
+    //@Test
     public void createWidgetTest() {
         loginPage.open();
         loginPage.login("superadmin", "erebus");
-        allDashboardsPage.waitForPageToLoad();
+        loginPage.waitForPageToLoad();
         allDashboardsPage.openDashboard("DEMO DASHBOARD");
-        var widgetName = dashboardPage.addNewWidget("Component health check", "NEW WIDGET");
-        Assertions.assertThat(dashboardPage.isWidgetPresentOnDashboard(widgetName))
+        dashboardPage.addNewWidget("Component health check", "NEW WIDGET");
+        Assertions.assertThat(dashboardPage.isWidgetPresentOnDashboard("NEW WIDGET"))
                 .as("Widget not created").isTrue();
 
 

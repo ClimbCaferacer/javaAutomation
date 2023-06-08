@@ -13,7 +13,6 @@ import com.reportportal.services.api.widget.edit.response.EditWidgetResponse;
 import com.reportportal.services.api.widget.get.response.GetWidgetResponse;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -35,7 +34,6 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 public class WidgetAPI extends AbstractReportPortalAPI {
 
-    HttpClient apacheClient = HttpClients.createDefault();
 
     public AbstractResponseWrapper<GetWidgetResponse> getWidgetById(String projectName, int widgetId) {
         return new AbstractResponseWrapper<>(

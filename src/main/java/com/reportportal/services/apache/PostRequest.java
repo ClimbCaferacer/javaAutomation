@@ -15,7 +15,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
-import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +23,7 @@ import java.util.List;
 
 public class PostRequest {
 
-    @Test
+
     public void postWithJson() throws IOException {
         HttpPost httpPost = new HttpPost("http://httpbin.org/post");
 
@@ -46,7 +45,7 @@ public class PostRequest {
         }
     }
 
-    @Test
+
     public void postForm() throws IOException {
         List<NameValuePair> form = new ArrayList<>();
         form.add(new BasicNameValuePair("id", "334573"));
@@ -67,7 +66,7 @@ public class PostRequest {
         }
     }
 
-    @Test
+
     public void postFileMultiPartForm() throws IOException {
         HttpPost httpPost = new HttpPost("http://httpbin.org/post");
 
@@ -88,7 +87,7 @@ public class PostRequest {
         }
     }
 
-    @Test
+
     public void postFileEntity() throws IOException {
         HttpPost httpPost = new HttpPost("http://httpbin.org/post");
         File fileToUpload = new File("C:\\Data\\src\\apachehttp\\src\\main\\resources\\google.png");

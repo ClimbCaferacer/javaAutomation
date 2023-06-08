@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractResponseWrapper<T> {
     private static final String DEFAULT_STATUS_CODE_ERROR = "Wrong status code!";
@@ -109,7 +109,7 @@ public abstract class AbstractResponseWrapper<T> {
 
     public AbstractResponseWrapper<T> expectStatusForbidden() {
         validateResponseCode(equalTo(RESPONSE_CODE_403));
-        assertEquals((Integer) this.response.extract().body().jsonPath().get("errorCode"), 4003);
+        assertEquals(Optional.ofNullable((Integer) this.response.extract().body().jsonPath().get("errorCode")), 4003);
         return this;
     }
 }
