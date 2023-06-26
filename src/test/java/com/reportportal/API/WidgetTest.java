@@ -4,28 +4,32 @@ import com.reportportal.BaseTest;
 import com.reportportal.services.api.widget.create.request.CreateWidgetRequest;
 import com.reportportal.services.api.widget.edit.request.EditWidgetRequest;
 import com.tngtech.java.junit.dataprovider.DataProvider;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runner.RunWith;
+
+import java.util.stream.Stream;
 
 import static com.reportportal.web.pages.AbstractPage.PROPS;
 import static java.lang.Integer.parseInt;
 import static java.lang.System.currentTimeMillis;
-
+@RunWith(DataProviderRunner.class)
 public class WidgetTest extends BaseTest {
 
 
 
     @DataProvider
-    public Object[][] widgetNames() {
+    public static Stream<Arguments> widgetNames() {
 
-        return new Object[][]{
-                {"Widget1"},
-                {"Widget2"},
-                {"Widget3"},
-                {"Widget4"},
-                {"Widget5"},
-        };
+        return Stream.of(
+                Arguments.of("Widget1"),
+                Arguments.of("Widget2"),
+                Arguments.of("Widget3")
+        );
     }
 
     @Test
@@ -44,8 +48,8 @@ public class WidgetTest extends BaseTest {
                 .isEqualTo(40420);
     }
 
-    @Test
-    @UseDataProvider("widgetNames")
+    @ParameterizedTest
+    @MethodSource("widgetNames")
     public void verifyCreateWidget(String widgetName) {
         widgetAPI.createWidget(PROPS.defaultProjectName(), widgetName).expectStatusOk();
     }
