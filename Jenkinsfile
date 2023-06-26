@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Add your build commands here
-                sh 'mvn clean install' // Assuming Maven is used for the project
+                sh 'mvn clean verify' // Assuming Maven is used for the project
             }
         }
 
