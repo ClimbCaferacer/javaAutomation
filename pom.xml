@@ -225,10 +225,10 @@
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
-            <suiteXmlFiles>
-              <!--suppress UnresolvedMavenProperty -->
+            <!--<suiteXmlFiles>
+              &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
               <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
-            </suiteXmlFiles>
+            </suiteXmlFiles>-->
             <systemPropertyVariables>
               <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
               <allure.link.issue.pattern>https://jira.com/browse/{}</allure.link.issue.pattern>
