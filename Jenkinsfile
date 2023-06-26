@@ -1,11 +1,18 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+                 image 'maven:3.6.3-jdk-11'
+                 args '-v $HOME/.m2:/root/.m2'
+        }
+    }
     tools {
         maven maven
     }
     stages {
         stage('Checkout') {
             steps {
+                sh 'node --version'
+                sh 'mvn --version'
                 checkout scm
             }
         }
