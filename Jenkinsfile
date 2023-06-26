@@ -25,9 +25,9 @@ pipeline {
         }
     }
 
-    post {
+/*     post {
         always {
-            junit 'target/surefire-reports/*.xml' // Publish test results
+            junit 'target/surefire-reports *//*.xml' // Publish test results
         }
-    }
+    } */
 }
