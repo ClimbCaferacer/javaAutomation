@@ -225,6 +225,7 @@
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
+              <test>com/reportportal/API/WidgetTest.java</test>
             <!--<suiteXmlFiles>
               &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
               <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
