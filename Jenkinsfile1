@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven'
+        //allure 'Allure'
+    }
+
+    triggers {
+            cron('0 0 * * *') // Build once per day
+            pollSCM('H/2 * * * *') // Check for changes every 2 minutes(this is an alternative to github webhook to cover -- Build project and execute tests - after each commit to Master branch)
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/ClimbCaferacer/javaAutomation.git', branch: 'ci'
+            }
+        }
+        stage('Build Project') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+        stage('Build Docker image') {
+            steps {
+                script {
+                    withEnv(["PATH+DOCKER=/usr/local/bin"]) {
+                        sh 'docker build --build-arg _JAVA_OPTIONS=-Xmx2g --memory=2g -t reportportal-api-tests-image .'
+                    }
+                }
+            }
+        }
+        stage('Run API tests in Docker container') {
+            steps {
+                script {
+                    def current_timestamp = new Date().format("yyyyMMddHHmmss")
+                    def container_name = "reportportal-api-tests-${current_timestamp}"
+
+                    withEnv(["PATH+DOCKER=/usr/local/bin"]) {
+                        sh "mkdir -p target/allure-report && chmod 777 target/allure-report"
+                        sh "mkdir -p target/allure-results && chmod 777 target/allure-results"
+                        sh "docker run --name ${container_name} -v \$(pwd)/target/allure-results:/app/target/allure-results reportportal-api-tests-image"
+                        sh "docker cp ${container_name}:/app/target/allure-results/. \$(pwd)/target/allure-results"
+                        sh "${tool 'Allure'}/bin/allure generate target/allure-results --output target/allure-report --clean"
+                        sh "docker rm ${container_name}"
+                    }
+                }
+            }
+         }
+    }
+    post {
+        always {
+            allure([includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'target/allure-results']]])
+        }
+    }
+}
