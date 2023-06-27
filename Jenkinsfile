@@ -9,6 +9,18 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Sonar') {
+                    steps {
+                        withSonarQubeEnv() {
+                        sh "mvn clean verify sonar:sonar \
+                              -Dsonar.projectKey=ClimbCaferacer_javaAutomation_AYeUuq4QPe3ERjiv4kqe \
+                              -Dsonar.projectName='javaAutomation' \
+                              -Dsonar.host.url=http://localhost:9000 \
+                              -Dsonar.token=sqp_2d19866d771d69ace82acdf49f457b32e35cdecb"
+                        }
+
+                    }
+                }
 
         stage('Build') {
             steps {
