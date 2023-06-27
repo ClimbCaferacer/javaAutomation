@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Build Project') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh 'mvn clean verify'
             }
         }
         stage('Build Docker image') {
