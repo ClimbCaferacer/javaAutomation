@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Sonar') {
                     steps {
-                        withSonarQubeEnv(installationName: 'My SonarQube Server') {
+                        withSonarQubeEnv(installationName: 'sonar') {
                         sh "mvn clean verify sonar:sonar \
                               -Dsonar.projectKey=ClimbCaferacer_javaAutomation_AYeUuq4QPe3ERjiv4kqe \
                               -Dsonar.projectName='javaAutomation' \
