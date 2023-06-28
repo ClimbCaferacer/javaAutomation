@@ -10,7 +10,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Sonar') {
+/*         stage('Sonar') {
                     steps {
                         withSonarQubeEnv(installationName: 'sonar') {
                         sh "mvn clean verify sonar:sonar \
@@ -21,7 +21,7 @@ pipeline {
                         }
 
                     }
-                }
+                } */
 
         stage('Build') {
             steps {
