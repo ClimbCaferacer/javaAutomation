@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven'
+        allure 'allure'
     }
     stages {
         stage('Checkout') {
