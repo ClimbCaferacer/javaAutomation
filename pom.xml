@@ -22,6 +22,10 @@
     <assertj.version>3.24.2</assertj.version>
     <cucumber.version>7.11.2</cucumber.version>
     <webdrivermanager.version>5.3.3</webdrivermanager.version>
+    <allure-report.version>2.7.0</allure-report.version>
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <download-maven-plugin.version>1.6.8</download-maven-plugin.version>
+    <allure-maven.version>2.11.2</allure-maven.version>
   </properties>
 
   <dependencyManagement>
@@ -228,22 +232,44 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>${maven-surefire-plugin.version}</version>
           <configuration>
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
-              <test>com/reportportal/API/WidgetTest.java</test>
-            <!--<suiteXmlFiles>
-              &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
-              <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
-            </suiteXmlFiles>-->
             <systemPropertyVariables>
-              <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-              <allure.link.issue.pattern>https://jira.com/browse/{}</allure.link.issue.pattern>
-              <allure.link.tms.pattern>https://jira.com/browse/{}</allure.link.tms.pattern>
+              <allure.results.directory>target/allure-results</allure.results.directory>
+              <testng.show.stack.frames>true</testng.show.stack.frames>
+              <java.util.logging.config.file>src/test/resources/simplelogger.properties
+              </java.util.logging.config.file>
+              <https.protocols>TLSv1,TLSv1.1,TLSv1.2</https.protocols>
+              <org.aspectj.weaver.Dump.exception>false</org.aspectj.weaver.Dump.exception>
             </systemPropertyVariables>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-maven</artifactId>
+          <version>${allure-maven.version}</version>
+          <configuration>
+            <reportVersion>${allure-report.version}</reportVersion>
+            <propertiesFilePath>allure.properties</propertiesFilePath>
+            <allureDownloadUrl>
+              https://github.com/allure-framework/allure2/releases/download/2.7.0/allure-2.7.0.zip
+            </allureDownloadUrl>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.googlecode.maven-download-plugin</groupId>
+          <artifactId>download-maven-plugin</artifactId>
+          <version>${download-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
