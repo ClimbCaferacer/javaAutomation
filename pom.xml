@@ -23,9 +23,10 @@
     <cucumber.version>7.11.2</cucumber.version>
     <webdrivermanager.version>5.3.3</webdrivermanager.version>
     <allure-report.version>2.7.0</allure-report.version>
-    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
     <download-maven-plugin.version>1.6.8</download-maven-plugin.version>
     <allure-maven.version>2.11.2</allure-maven.version>
+    <junit.jupiter.engine.version>5.9.2</junit.jupiter.engine.version>
   </properties>
 
   <dependencyManagement>
@@ -112,7 +113,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.9.2</version>
+      <version>${junit.jupiter.engine.version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -239,7 +240,6 @@
             </argLine>
             <systemPropertyVariables>
               <allure.results.directory>target/allure-results</allure.results.directory>
-              <testng.show.stack.frames>true</testng.show.stack.frames>
               <java.util.logging.config.file>src/test/resources/simplelogger.properties
               </java.util.logging.config.file>
               <https.protocols>TLSv1,TLSv1.1,TLSv1.2</https.protocols>
@@ -252,6 +252,11 @@
               <artifactId>aspectjweaver</artifactId>
               <version>${aspectj.version}</version>
             </dependency>
+              <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.jupiter.engine.version}</version>
+              </dependency>
           </dependencies>
         </plugin>
         <plugin>
